@@ -220,3 +220,4 @@ def logout():
     flash('Вы вышли из системы.', 'info')
     return redirect(url_for('index'))
 
+app.run(debug=True)
