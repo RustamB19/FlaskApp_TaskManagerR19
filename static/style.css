@@ -1,0 +1,286 @@
+
+body {
+    /* Фоновое изображение */
+    background-image: url(177101.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+
+    /* Центрирование контента */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Контейнер по центру экрана */
+.center-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Блок авторизации */
+.auth-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 15px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.auth-box h1 {
+    margin-bottom: 10px;
+    font-size: 28px;
+    color: #333;
+}
+
+.auth-box .subtitle {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Стили для полей ввода */
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+}
+
+.input-field {
+    width: 85%;
+    padding: 10px 10px 10px 35px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+}
+
+.input-field:focus {
+    border-color: #6c63ff;
+}
+
+/* Основная кнопка */
+.btn {
+    width: 90%;
+    padding: 10px;
+    background: linear-gradient(135deg, #6c63ff, #3f3dff);
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #3f3dff, #6c63ff);
+    transform: translateY(-2px);
+}
+
+
+.secondary-btn {
+    background: #fff;
+    color: #6c63ff;
+    border: 2px solid #6c63ff;
+}
+
+.secondary-btn:hover {
+    background: #6c63ff;
+    color: #fff;
+}
+
+/* Основной контейнер доски задач */
+.board-box {
+    display: flex;
+    width: 1120px;
+    height: 620px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Левая боковая панель */
+.sidebar {
+    width: 250px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 2px solid #ddd;
+}
+
+.sidebar h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Кнопки меню и выхода */
+.sidebar .btn,
+.logout-btn {
+    width: 180px;
+    height: 45px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.logout-btn {
+    background: #ff4d4d;
+    color: #fff;
+    border: none;
+}
+
+.logout-btn:hover {
+    background: #e03e3e;
+}
+
+/* Правая часть с задачами */
+.tasks-area {
+    flex-grow: 1;
+    padding: 30px 35px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Сетка карточек задач */
+.tasks-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    align-items: start;
+}
+
+/* Карточка отдельной задачи */
+.task-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+    max-height: 340px;
+    width: 90%;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.task-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+/* Заголовок и описание задачи */
+.task-card h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 8px;
+    word-wrap: break-word;
+}
+
+.task-card p {
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: 160px;
+    font-size: 14px;
+    color: #444;
+    margin: 8px 0;
+    word-wrap: break-word;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+/* Дата создания задачи */
+.task-date {
+    font-size: 15px;
+    color: #222;
+    font-weight: 600;
+    margin-top: 8px;
+    display: block;
+}
+
+/* Кнопки “Редактировать” и “Удалить” */
+.task-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.edit-btn,
+.delete-btn {
+    width: 120px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 7px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+/* Кнопка редактирования */
+.edit-btn {
+    background: #6c63ff;
+    color: #fff;
+    border: none;
+    padding-left: 10px;
+    text-align: left;
+}
+
+.edit-btn:hover {
+    background: #5148ff;
+}
+
+/* Кнопка удаления */
+.delete-btn {
+    background: #fff;
+    color: #ff4d4d;
+    border: 2px solid #ff4d4d;
+}
+
+.delete-btn:hover {
+    background: #ff4d4d;
+    color: #fff;
+}
+
+.form-title {
+    color: black;
+    margin-bottom: 20px;
+}
+
+/* Класс для скрытия элементов (было: style="display:none;") */
+.hidden-element {
+    display: none !important;
+}
+
+/* Специфично для формы регистрации */
+#registerForm {
+    display: none;
+}
+
+/* Показываем форму при добавлении класса */
+#registerForm.visible {
+    display: block;
+}
+
+

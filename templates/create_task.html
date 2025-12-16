@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Новая задача</title>
+    <!-- Подключение основного CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="center-container">
+    <div class="auth-box">
+        <!-- Заголовок страницы -->
+        <h1 class="form-title">>Новая задача</h1>
+
+        <!-- Форма создания новой задачи -->
+        <form method="POST">
+            {{ form.hidden_tag() }}
+
+            <!-- Поле для названия задачи -->
+            <div class="input-group">
+                <label for="title" class="black-label">Введите название задачи (макс. 25 символов)</label>
+                {{ form.title(class_="input-field", placeholder="") }}
+            </div>
+
+            <!-- Поле для описания задачи -->
+            <div class="input-group">
+                <label for="content" class="black-label">Введите описание задачи (макс. 200 символов)</label>
+                {{ form.content(class_="input-field", placeholder="") }}
+            </div>
+
+            <!-- Кнопка сохранения задачи -->
+            {{ form.submit(class_="btn", value="Сохранить") }}
+        </form>
+
+        <!-- Кнопка возврата на доску задач -->
+        <button class="btn secondary-btn js-navigate" data-href="{{ url_for('board') }}">Назад</button>
+    </div>
+</div>
+</body>
+</html>

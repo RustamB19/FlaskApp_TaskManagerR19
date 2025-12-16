@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='js/navigation.js') }}" defer></script>
+</head>
+<body>
+<div class="center-container">
+    <div class="auth-box">
+
+        <!-- Заголовок страницы -->
+        <h1 class="form-title">{{ title }}</h1>
+
+        <!-- Форма создания или редактирования задачи -->
+        <form method="POST">
+            {{ form.hidden_tag() }}
+
+            <!-- Поле для ввода названия задачи -->
+            <div class="input-group">
+                <label for="title" class="black-label">Введите название задачи (макс. 25 символов)</label>
+                {{ form.title(class_="input-field", placeholder="") }}
+            </div>
+
+            <!-- Поле для ввода описания задачи -->
+            <div class="input-group">
+                <label for="content" class="black-label">Введите описание задачи (макс. 200 символов)</label>
+                {{ form.content(class_="input-field", placeholder="") }}
+            </div>
+
+            <!-- Кнопка сохранения (создать или обновить задачу) -->
+            {{ form.submit(class_="btn", value=submit_text) }}
+        </form>
+
+        <!-- Кнопка возврата на доску задач -->
+        <button class="btn secondary-btn js-navigate" data-href="{{ url_for('board') }}">Назад</button>
+    </div>
+</div>
+</body>
+</html>
+

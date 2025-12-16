@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Доска задач</title>
+    <!-- Подключение основного CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='js/navigation.js') }}" defer></script>
+</head>
+<body>
+<div class="center-container">
+    <div class="board-box">
+
+        <!-- Левая панель навигации -->
+        <div class="sidebar">
+            <h2>Меню</h2>
+            <div class="menu-buttons">
+                <!-- Кнопка для перехода на страницу создания новой задачи -->
+                <button class="btn" data-href="{{ url_for('create_task') }}">Создать задачу</button>
+
+                <!-- Кнопка выхода из аккаунта -->
+                <form method="GET" action="{{ url_for('logout') }}">
+                    <button class="btn logout-btn">Выйти</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Правая часть — список задач пользователя -->
+        <div class="tasks-area">
+            {% if tasks %}
+                <div class="tasks-grid">
+                    {% for task in tasks %}
+                        <!-- Карточка отдельной задачи -->
+                        <div class="task-card">
+                            <!-- Название задачи -->
+                            <h3>{{ task.title }}</h3>
+
+                            <!-- Описание задачи -->
+                            <p>{{ task.content }}</p>
+
+                            <!-- Отображение даты создания в русском формате -->
+                            <small class="task-date">Дата создания: {{ format_russian_date(task.created_at) }}</small>
+
+                            <!-- Кнопки управления задачей -->
+                            <div class="task-actions">
+                                <!-- Кнопка редактирования -->
+                                <button class="edit-btn" data-href="{{ url_for('edit_task', task_id=task.id) }}">Редактировать</button>
+
+                                <!-- Форма удаления задачи с защитой CSRF -->
+                                <form method="POST" action="{{ url_for('delete', task_id=task.id) }}">
+                                    {{ delete_form.csrf_token }}
+                                    <button type="submit" class="delete-btn">Удалить</button>
+                                </form>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <!-- Сообщение, если задач ещё нет -->
+                <p>Пока нет задач. Нажмите “Создать задачу”, чтобы добавить первую!</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

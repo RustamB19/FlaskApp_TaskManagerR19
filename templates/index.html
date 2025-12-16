@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Manager</title>
+    <!-- Подключение основного CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Подключение иконок Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/navigation.js') }}" defer></script>
+</head>
+<body>
+<div class="center-container">
+    <div class="auth-box">
+        <!-- Заголовок и краткое описание -->
+        <h1>Добро пожаловать в Task Manager!</h1>
+        <p class="subtitle">Добавляйте, удаляйте и редактируйте задачи каждый день.</p>
+
+        <!-- Форма авторизации -->
+        <form id="loginForm" method="POST">
+            {{ login_form.hidden_tag() }}
+
+            <!-- Поле для ввода Email -->
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                {{ login_form.email(class_="input-field", placeholder="Email") }}
+            </div>
+
+            <!-- Поле для ввода пароля -->
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                {{ login_form.password(class_="input-field", placeholder="Пароль") }}
+            </div>
+
+            <!-- Кнопка входа -->
+            {{ login_form.submit(class_="btn") }}
+        </form>
+
+        <!-- Кнопка переключения на форму регистрации -->
+        <button id="show-register" class="btn secondary-btn">Зарегистрироваться</button>
+
+        <!-- Форма регистрации -->
+        <form id="registerForm" method="POST" class="hidden-element">
+            {{ register_form.hidden_tag() }}
+
+            <!-- Поле для ввода имени -->
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                {{ register_form.username(class_="input-field", placeholder="Имя") }}
+            </div>
+
+            <!-- Поле для ввода Email -->
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                {{ register_form.email(class_="input-field", placeholder="Email") }}
+            </div>
+
+            <!-- Поле для ввода пароля -->
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                {{ register_form.password(class_="input-field", placeholder="Пароль") }}
+            </div>
+
+            <!-- Поле для подтверждения пароля -->
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                {{ register_form.confirm_password(class_="input-field", placeholder="Повторите пароль") }}
+            </div>
+
+            <!-- Кнопки отправки и возврата -->
+            <div class="button-group">
+                {{ register_form.submit(class_="btn") }}
+                <button type="button" class="btn secondary-btn" id="backToLogin">Назад</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>
