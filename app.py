@@ -69,25 +69,6 @@ def set_security_headers(response):
 class DeleteForm(FlaskForm):
     pass
 
-
-@app.route('/login_sql', methods=['GET', 'POST'])
-def login_sql():
-    message = ""
-    if request.method == "POST":
-        email = request.form.get("email", "")
-        # УЯЗВИМЫЙ SQL (только email)
-        query = f"SELECT * FROM user WHERE email = '{email}'"
-        try:
-            result = db.session.execute(text(query)).fetchone()
-        except:
-            result = None
-        if result:
-            message = "Успешный вход (УЯЗВИМАЯ ВЕРСИЯ)"
-        else:
-            message = "Неверные данные"
-    return render_template("login_sql.html", message=message)
-
-
 @app.route('/login_safe', methods=['GET', 'POST'])
 def login_safe():
     message = ""
@@ -220,4 +201,4 @@ def logout():
     flash('Вы вышли из системы.', 'info')
     return redirect(url_for('index'))
 
-app.run(debug=True)
+

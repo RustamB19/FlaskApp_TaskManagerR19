@@ -21,12 +21,13 @@ class NoServerHeaderRequestHandler(werkzeug.serving.WSGIRequestHandler):
 if __name__ == '__main__':
     # Запуск приложения с использованием кастомного обработчика безопасности
     werkzeug.serving.run_simple(
-        '0.0.0.0',
+        '127.0.0.1',
         5000,
         app,
         threaded=True,
         request_handler=NoServerHeaderRequestHandler
     )
+
 
 
 
