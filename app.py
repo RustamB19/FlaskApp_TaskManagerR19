@@ -202,3 +202,4 @@ def logout():
     return redirect(url_for('index'))
 
 
+app.run(debug=True)
